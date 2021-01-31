@@ -42,14 +42,6 @@ void atomic_worker_fetch_add(atomic<int>* result)
 	}
 }
 
-void atomic_sse_worker_fetch_add(atomic<__int64>* result)
-{
-	for (int n = 0; n < LOOP_CNT; n++)
-	{
-		(*result).fetch_add(1);
-	}
-}
-
 void sse_worker(__int64* result)
 {
 	for (int n = 0; n < LOOP_CNT; n++)
@@ -147,7 +139,7 @@ int main()
 	rK = 0;
 	vK = 0;
 	aK = 0;
-	sseK;
+	sseK = 0;
 
 	//동기화 없이 계산하면 어떻게 될까?
 	vector<thread> vThread;
